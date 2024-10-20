@@ -25,7 +25,7 @@ ScrollTrigger.scrollerProxy("#main", {
 }
 
 
-if (window.innerWidth> 768) {
+if (window.innerWidth> 600) {
     locomotive()
 
     gsap.from("#nav", {
@@ -119,7 +119,7 @@ if (window.innerWidth> 768) {
       
           }
       })
-}else if(window.innerWidth<768){
+}else if(window.innerWidth < 600){
     gsap.from("#nav", {
         y: -40,
         opacity: 0,
