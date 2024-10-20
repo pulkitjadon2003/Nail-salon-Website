@@ -11,10 +11,11 @@ html,body{
     overflow-x: hidden;
 }
 body{
-    scroll-behavior: smooth;
-}
-#main{
     background-color: black;
+}
+
+#main{
+    min-height: 100%;
 }
 #page1{
     height: 100vh;
@@ -66,7 +67,6 @@ body{
     transition: all ease .3s;
     font-family: vvds;
     text-transform: uppercase;
-    width: 13vw;
     text-align: center;
     line-height: 3vh;
 }
@@ -76,10 +76,12 @@ body{
 }
 
 #nav h1 strong{
-    font-size: .75vw;
+    font-size: .75vmax;
     font-weight: 300;
     text-transform: capitalize;
     /* position: absolute; */
+    text-align: center;
+    white-space: nowrap;
 
 }
 
@@ -274,19 +276,25 @@ body{
 
 
 @media (max-width:600px) {
-    
+    #main{
+        min-height: 100vh;
+    }
     #page1{
         background-position: center;
-        padding-top: 80px;
+        padding-top: 0;
     }
     #nav{
         height: 80px;
-        width: 100%;
+        width: 100vw;
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        padding: 0 10px;
-    
+        justify-content:center;
+        padding-top: 4vh;
+    }
+    #nav h1 strong{
+        font-size: 2vmax;
+        white-space: nowrap;
+        text-align: center;
     }
     #nav #nav2{
         width: 40%;
@@ -336,17 +344,19 @@ body{
         height: 100%;
         width: 100%;
         /* background-color: red; */
-        padding: 60% 5%;
+        padding: 40% 5%;
         background: linear-gradient(transparent,rgba(0, 0, 0, 0.503),black);
     }
     
     #page1-div>h1{
-        font-size: 7vw;
+        font-size: 6vmax;
         margin-bottom: 3vh;
+        width: 100%;
     }
     #page1-div>p{
-        font-size: 2vw;
-        width: 90%;
+        font-size: 2vmax;
+        font-weight: 300;
+        width: 80%;
         margin-bottom: 5vh ;
     }
     #page1-div>button{
@@ -362,7 +372,6 @@ body{
         position: relative;
         /* background-color: red; */
         padding: 7% 7%;
-        position: relative;
     
     }
     
@@ -405,7 +414,7 @@ body{
         transition: all ease .4s;
     }
     .elem h3{
-        font-size: 4.2vw;
+        font-size: 4.2vmax;
         width: 80%;
         position: absolute;
         bottom: 30%;
@@ -415,7 +424,7 @@ body{
         white-space: break-spaces;
     }
     .elem h2{
-        font-size: 1.5vw;
+        font-size: 2vmax;
         width: 80%;
         position: absolute;
         bottom: 12%;

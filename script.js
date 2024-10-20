@@ -1,11 +1,11 @@
-function init(){
+function locomotive() {
     gsap.registerPlugin(ScrollTrigger);
 
 // Using Locomotive Scroll from Locomotive https://github.com/locomotivemtl/locomotive-scroll
 
 const locoScroll = new LocomotiveScroll({
   el: document.querySelector("#main"),
-  smooth: true
+//   smooth: true,
 });
 // each time Locomotive Scroll updates, tell ScrollTrigger to update too (sync positioning)
 locoScroll.on("scroll", ScrollTrigger.update);
@@ -22,109 +22,169 @@ ScrollTrigger.scrollerProxy("#main", {
   pinType: document.querySelector("#main").style.transform ? "transform" : "fixed"
 });
 
-
-
-// each time the window updates, we should refresh ScrollTrigger and then update LocomotiveScroll. 
-ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
-
-// after everything is set up, refresh() ScrollTrigger and update LocomotiveScroll because padding may have been added for pinning, etc.
-ScrollTrigger.refresh();
-
-
-
-
 }
 
-init()
+
+if (window.innerWidth> 768) {
+    locomotive()
+
+    gsap.from("#nav", {
+        y: -40,
+        opacity: 0,
+        delay: 0.4,
+      })
+      
+      gsap.to("#nav",{
+          backgroundColor:"black",
+          scrollTrigger:{
+              trigger:"#nav",
+              scroller:"#main",
+              // markers:true,
+              start:"top -100%",
+              end:"top 120%",
+              scrub:1,
+          }
+      })
+      
+      gsap.from("#page1-div",{
+          opacity:0,
+          duration:1
+      })
+      
+      
+      gsap.from("#page1-div h1,#page1-div p,#page1-div button",{
+          opacity:0,
+          y:40,
+          delay:.5,
+          stagger:.3,
+          duration:.3
+      })
+      
+      
+      gsap.from("#page2>h1",{
+          x:-40,
+          opacity:0,
+          // duration:1,
+          // delay:.1,
+          // duration:1,
+          scrollTrigger:{
+              trigger:"#page2>h1",
+              scroller:"#main",
+              // markers:true,
+              start:"top 55%",
+              end:"top 20%",
+              scrub:2
+          }
+      })
+      
+      
+      gsap.from("#page2-div",{
+          x:100,
+          opacity:0,
+          delay:.1,
+      
+          scrollTrigger:{
+              trigger:"#page2-div",
+              scroller:"#main",
+              // markers:true,
+              start:"top 70%",
+              end:"top 20%",
+              scrub:1
+      
+          }
+      })
+      
+      gsap.from("#page3 h1",{
+          opacity:0,
+          y:100,
+          duration:1,
+          scrollTrigger:{
+              trigger:"#page3 h1",
+              scroller:"#main",
+              // markers:true,
+              start:"top 70%",
+              end:"top 70%"
+          }
+      })
+      gsap.from("#page3 .card",{
+          opacity:0,
+          y:50,
+          stagger:.2,
+          scrollTrigger:{
+              trigger:"#page3 .card",
+              scroller:"#main",
+              // markers:true,
+              start:"top 70%",
+              end:"top 70%"
+      
+          }
+      })
+}else if(window.innerWidth<768){
+    gsap.from("#nav", {
+        y: -40,
+        opacity: 0,
+        delay: 0.4,
+      })
+      
+      gsap.to("#nav",{
+          backgroundColor:"black",
+          scrollTrigger:{
+              trigger:"#nav",
+              scroller:"#main",
+              // markers:true,
+              start:"top -100%",
+              end:"top 120%",
+              scrub:1,
+          }
+      })
+      
+      gsap.from("#page1-div",{
+          opacity:0,
+          duration:1
+      })
+      
+      
+      gsap.from("#page1-div h1,#page1-div p,#page1-div button",{
+          opacity:0,
+          y:40,
+          delay:.5,
+          stagger:.3, 
+          duration:.3
+      })
+      
+      
+      gsap.from("#page2>h1",{
+          x:-40,
+          opacity:0,
+          // duration:1,
+          // delay:.1,
+          // duration:1,
+          
+      })
+      
+      
+      gsap.from("#page2-div",{
+          x:100,
+          opacity:0,
+          delay:.1,
+      
+          
+      })
+      
+      gsap.from("#page3 h1",{
+          opacity:0,
+          y:100,
+          duration:1,
+          
+      })
+      gsap.from("#page3 .card",{
+          opacity:0,
+          y:50,
+          stagger:.2,
+          
+      })
+      
+}
 
 
-gsap.from("#nav", {
-  y: -40,
-  opacity: 0,
-  delay: 0.4,
-})
 
-gsap.to("#nav",{
-    backgroundColor:"black",
-    scrollTrigger:{
-        trigger:"#nav",
-        scroller:"#main",
-        // markers:true,
-        start:"top -100%",
-        end:"top 120%",
-        scrub:1,
-    }
-})
-
-gsap.from("#page1-div",{
-    opacity:0,
-    duration:1
-})
-
-
-gsap.from("#page1-div h1,#page1-div p,#page1-div button",{
-    opacity:0,
-    y:40,
-    delay:.5,
-    stagger:.3,
-    duration:.3
-})
-
-
-gsap.from("#page2>h1",{
-    x:-40,
-    opacity:0,
-    // duration:1,
-    // delay:.1,
-    // duration:1,
-    scrollTrigger:{
-        trigger:"#page2>h1",
-        scroller:"#main",
-        // markers:true,
-        start:"top 55%",
-        end:"top 20%",
-        scrub:2
-    }
-})
-
-
-gsap.from("#page2-div",{
-    x:100,
-    opacity:0,
-    // delay:.1,
-
-    scrollTrigger:{
-        trigger:"#page2-div",
-        scroller:"#main",
-        // markers:true,
-        start:"top 85%",
-        end:"top 20%",
-        scrub:1
-
-    }
-})
-
-gsap.from("#page3 h1",{
-    opacity:0,
-    y:100,
-    duration:1,
-    scrollTrigger:{
-        trigger:"#page3 h1",
-        scroller:"#main",
-        // markers:true,
-        start:"top 85%",
-        end:"top 20%"
-
-    }
-})
-gsap.from("#page3 .card",{
-    opacity:0,
-    y:50,
-    stagger:.2,
-    scrollTrigger:{
-        trigger:"#page3 .card",
-        scroller:"#main",
-        // markers:true,
-        start:"top 70%"
-    }
-})
