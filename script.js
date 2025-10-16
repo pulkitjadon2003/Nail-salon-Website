@@ -35,9 +35,14 @@ ScrollTrigger.refresh();
 }
 
 
-window.addEventListener("resize",()=>{
-    location.reload()
-})
+let lastWidth = window.innerWidth;
+window.addEventListener("resize", () => {
+  if (Math.abs(window.innerWidth - lastWidth) > 100) {
+    location.reload();
+  }
+  lastWidth = window.innerWidth;
+});
+
 
 gsap.from("#nav", {
     y: -40,
