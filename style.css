@@ -309,14 +309,17 @@ body{
 }
 
 #page3-div .card{
+    min-height: fit-content;
     height: 200px;
-    width: 230px;
+    /* min-width:; */
+    width: 18vw;
     background-color: #222;
     /* padding: 16px 0; */
     padding: 20px;
     scale: 1.1;
     border-radius: 15px;
     margin: 0 3vw;
+    position: relative;
 }
 
 .card h2{
@@ -586,6 +589,7 @@ body{
         border-radius: 15px;
         margin: 0 3vw;
         margin-bottom: 50px;
+
     }
     
     .card h2{
